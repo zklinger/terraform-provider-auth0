@@ -3,9 +3,9 @@ package auth0
 import (
 	"testing"
 
-	"github.com/alexkappa/terraform-provider-auth0/auth0/internal/random"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/resource"
 	"github.com/hashicorp/terraform-plugin-sdk/terraform"
+	"github.com/zklinger/terraform-provider-auth0/auth0/internal/random"
 )
 
 func TestAccClientGrant(t *testing.T) {
@@ -83,7 +83,7 @@ const testAccClientGrantConfigUpdate = testAccClientGrantAuxConfig + `
 resource "auth0_client_grant" "my_client_grant" {
 	client_id = "${auth0_client.my_client.id}"
 	audience = "${auth0_resource_server.my_resource_server.identifier}"
-	scope = [ "create:foo" ] 
+	scope = [ "create:foo" ]
 }
 `
 

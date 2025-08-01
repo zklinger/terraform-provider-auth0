@@ -1,8 +1,8 @@
 terraform {
   required_providers {
     auth0 = {
-      source  = "alexkappa/auth0"
-      version = "0.24.3"
+      source  = "zklinger/legacy-auth0"
+      version = "0.27.0"
     }
   }
 }
@@ -20,8 +20,8 @@ resource "auth0_action" "do" {
 
   runtime = "node16"
   code    = <<-EOT
-	exports.onContinuePostLogin = async (event, api) => { 
-		console.log(event) 
+	exports.onContinuePostLogin = async (event, api) => {
+		console.log(event)
 	};"
 	EOT
 

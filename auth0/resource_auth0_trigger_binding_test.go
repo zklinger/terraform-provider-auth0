@@ -3,9 +3,9 @@ package auth0
 import (
 	"testing"
 
-	"github.com/alexkappa/terraform-provider-auth0/auth0/internal/random"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/resource"
 	"github.com/hashicorp/terraform-plugin-sdk/terraform"
+	"github.com/zklinger/terraform-provider-auth0/auth0/internal/random"
 )
 
 func TestAccTriggerBinding(t *testing.T) {
@@ -50,8 +50,8 @@ resource auth0_action action_foo {
 		version = "v2"
 	}
 	code = <<-EOT
-	exports.onContinuePostLogin = async (event, api) => { 
-		console.log("foo") 
+	exports.onContinuePostLogin = async (event, api) => {
+		console.log("foo")
 	};"
 	EOT
 	deploy = true
@@ -64,8 +64,8 @@ resource auth0_action action_bar {
 		version = "v2"
 	}
 	code = <<-EOT
-	exports.onContinuePostLogin = async (event, api) => { 
-		console.log("bar") 
+	exports.onContinuePostLogin = async (event, api) => {
+		console.log("bar")
 	};"
 	EOT
 	deploy = true

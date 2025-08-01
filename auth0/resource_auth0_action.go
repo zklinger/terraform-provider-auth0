@@ -5,10 +5,10 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/alexkappa/terraform-provider-auth0/auth0/internal/hash"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/resource"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/validation"
+	"github.com/zklinger/terraform-provider-auth0/auth0/internal/hash"
 
 	"gopkg.in/auth0.v5/management"
 )

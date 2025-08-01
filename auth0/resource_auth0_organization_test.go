@@ -5,10 +5,10 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/alexkappa/terraform-provider-auth0/auth0/internal/random"
 	"github.com/hashicorp/go-multierror"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/resource"
 	"github.com/hashicorp/terraform-plugin-sdk/terraform"
+	"github.com/zklinger/terraform-provider-auth0/auth0/internal/random"
 	"gopkg.in/auth0.v5/management"
 )
 
@@ -109,7 +109,7 @@ const testAccOrganizationCreate = testAccOrganizationAux + `
 resource auth0_organization acme {
 	name = "test-{{.random}}"
 	display_name = "Acme Inc. {{.random}}"
-	
+
 	connections {
 		connection_id = auth0_connection.acme.id
 	}
