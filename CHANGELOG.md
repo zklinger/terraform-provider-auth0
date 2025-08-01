@@ -1,3 +1,11 @@
+## 0.27.0
+
+ENHANCEMENTS:
+
+* resource/auth0_action: Allow *node22* as valid `runtime` option ([#1](https://github.com/zklinger/terraform-provider-auth0/pull/1))
+
+# ------------- Pre-fork CHANGELOG Entries -------------
+
 ## 0.26.2
 
 ENHANCEMENTS:
