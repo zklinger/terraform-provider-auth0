@@ -1,0 +1,64 @@
+version: 2
+
+project_name: terraform-provider-auth0
+
+builds:
+  - id: terraform
+    main: ./main.go
+    goos:
+      - linux
+      - darwin
+      - windows
+    goarch:
+      - amd64
+      - arm64
+    goamd64:
+      - v1
+    env:
+      - CGO_ENABLED=0
+    ldflags:
+      - -s -w -X main.version={{.Version}}
+
+archives:
+  - id: terraform
+    builds: [terraform]
+    format: zip
+    name_template: "{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
+    replacements:
+      amd64: x86_64
+      arm64: aarch64
+    files:
+      - none # Only include the binary
+    wrap_in_directory: false # Required for Terraform registry compliance
+    format_overrides:
+      - goos: windows
+        format: zip
+
+checksum:
+  name_template: "{{ .ProjectName }}_{{ .Version }}_SHA256SUMS"
+
+signs:
+  - artifacts: [checksum]
+    args:
+      - --armor
+      - --detach-sign
+      - --local-user="{{ .Env.GPG_FINGERPRINT }}"
+    signature: "${artifact}.sig"
+
+release:
+  github:
+    owner: zklinger
+    name: terraform-provider-auth0
+  draft: false
+  prerelease: auto
+
+changelog:
+  use: git
+  sort: desc
+  filters:
+    exclude:
+      - "^docs:"
+      - "^test:"
+
+snapshot:
+  name_template: "snapshot-{{ .Commit }}"
